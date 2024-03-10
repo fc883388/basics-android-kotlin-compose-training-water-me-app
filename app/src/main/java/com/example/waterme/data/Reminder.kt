@@ -16,12 +16,15 @@
 
 package com.example.waterme.data
 
-import android.content.Context
+import androidx.annotation.StringRes
+import java.util.concurrent.TimeUnit
 
-interface AppContainer {
-    val waterRepository : WaterRepository
-}
-
-class DefaultAppContainer(context: Context) : AppContainer {
-    override val waterRepository = WorkManagerWaterRepository(context)
-}
+/**
+ * Data class for representing the information required for reminder dialogs items.
+ * */
+data class Reminder(
+    @StringRes val durationRes: Int,
+    val duration: Long,
+    val unit: TimeUnit,
+    val plantName: String
+)

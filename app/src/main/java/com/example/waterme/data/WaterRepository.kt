@@ -16,12 +16,10 @@
 
 package com.example.waterme.data
 
-import android.content.Context
+import com.example.waterme.model.Plant
+import java.util.concurrent.TimeUnit
 
-interface AppContainer {
-    val waterRepository : WaterRepository
-}
-
-class DefaultAppContainer(context: Context) : AppContainer {
-    override val waterRepository = WorkManagerWaterRepository(context)
+interface WaterRepository {
+    fun scheduleReminder(duration: Long, unit: TimeUnit, plantName: String)
+    val plants: List<Plant>
 }
